@@ -26,7 +26,7 @@ body {
 #root {
   flex-direction: column;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1200px; /* Keep this max-width for larger screens */
   box-shadow: 0 0 30px rgba(0,0,0,0.2);
   background-color: transparent;
   position: relative;
@@ -44,6 +44,34 @@ body {
   z-index: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  padding-top: 1rem; /* Added padding to give space at top */
+  padding-bottom: 1rem; /* Added padding to give space at bottom */
+  box-sizing: border-box; /* Ensures padding is included in element's total width and height */
+}
+
+/* Adjust header spacing for smaller screens */
+header .container {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+header h1 {
+  font-size: 1.8rem; /* Slightly smaller font for mobile header */
+}
+
+header svg {
+  width: 24px; /* Slightly smaller SVG for mobile header */
+  height: 24px;
+}
+
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 2.5rem; /* Revert to larger font for desktop */
+  }
+  header svg {
+    width: 30px; /* Revert to larger SVG for desktop */
+    height: 30px;
+  }
 }
 
 .theme-emerald {
