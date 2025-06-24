@@ -9,7 +9,6 @@ html, body, #root {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   font-size: 15px;
 }
 
@@ -31,6 +30,7 @@ body {
   box-shadow: 0 0 30px rgba(0,0,0,0.2);
   background-color: transparent;
   position: relative;
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -42,6 +42,8 @@ body {
   min-height: 100vh;
   position: relative;
   z-index: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .theme-emerald {
@@ -229,16 +231,16 @@ body {
 .bg-input-bg-color {
   background-color: var(--color-input-bg);
 }
-.hover\\:bg-accent-dark:hover {
+.hover\:bg-accent-dark:hover {
   background-color: var(--color-accent-dark);
 }
 .border-subtle-color {
   border-color: var(--color-border-subtle);
 }
-.focus\\:ring-accent-main:focus {
+.focus\:ring-accent-main:focus {
   --tw-ring-color: var(--color-accent-main);
 }
-.focus\\:border-accent-main:focus {
+.focus\:border-accent-main:focus {
     border-color: var(--color-accent-main);
 }
 
@@ -347,7 +349,7 @@ body {
 }
 
 .animate-pop-in {
-    animation: popIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: popIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .animate-fade-in-out {
