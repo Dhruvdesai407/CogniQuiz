@@ -187,7 +187,7 @@ const QuizGame = ({ parameters, onConcludeExpedition, onLoadingAnimationChange, 
               <p className="mb-4 font-merriweather">{fetchError}</p>
               <button
                   onClick={() => onConcludeExpedition({ finalScore: score.totalScore, wasError: true, totalCorrect: score.correct, totalQuestions: score.total, quizParameters: parameters })}
-                  className="btn-primary w-full md:w-auto"
+                  className="btn w-full md:w-auto"
                   data-interactive="true"
               >
                   Back to Quest Setup
@@ -210,7 +210,7 @@ const QuizGame = ({ parameters, onConcludeExpedition, onLoadingAnimationChange, 
                 No challenges found for your criteria. Please return to setup and try different selections.
                 <button
                     onClick={() => onConcludeExpedition({ finalScore: score.totalScore, wasError: true, totalCorrect: score.correct, totalQuestions: score.total, quizParameters: parameters })}
-                    className="btn-primary w-full md:w-auto"
+                    className="btn w-full md:w-auto"
                     data-interactive="true"
                 >
                     Back to Quest Setup
@@ -242,10 +242,7 @@ const QuizGame = ({ parameters, onConcludeExpedition, onLoadingAnimationChange, 
                         <button
                             onClick={() => handleSubmitAnswer(false)}
                             disabled={!selectedAnswer}
-                            className={`w-full py-3 rounded-lg font-bold transition duration-300 ease-in-out transform hover:scale-105 active:scale-95 text-xl font-heading tracking-wide uppercase
-                                ${selectedAnswer ? 'btn-primary' : 'bg-border-subtle-color text-body-color cursor-not-allowed shadow-none'}
-                                focus:outline-none focus:ring-4 focus:ring-accent-main/50
-                            `}
+                            className="btn"
                             data-interactive="true"
                         >
                             Submit Answer
@@ -268,7 +265,7 @@ const QuizGame = ({ parameters, onConcludeExpedition, onLoadingAnimationChange, 
                     {answeredThisQuestion && (
                         <button
                             onClick={handleNextQuestion}
-                            className="btn-secondary mt-6 w-full md:w-auto"
+                            className="btn mt-6 w-full md:w-auto"
                             data-interactive="true"
                         >
                             {currentQuestionIndex < questions.length - 1 ? 'Next Challenge' : 'Conclude Quest'}

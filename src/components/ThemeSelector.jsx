@@ -6,6 +6,7 @@ const ThemeSelector = ({ currentTheme, onThemeChange }) => {
     { name: 'Royal Indigo', value: 'theme-indigo' },
     { name: 'Crimson Grandeur', value: 'theme-crimson' },
     { name: 'Obsidian Grace', value: 'theme-obsidian' },
+    { name: 'Azure Dawn', value: 'theme-light-azure' },
   ];
 
   return (

@@ -26,7 +26,6 @@ body {
 #root {
   flex-direction: column;
   width: 100%;
-  max-width: 1200px; /* Keep this max-width for larger screens */
   box-shadow: 0 0 30px rgba(0,0,0,0.2);
   background-color: transparent;
   position: relative;
@@ -40,37 +39,50 @@ body {
   width: 100%;
   flex-grow: 1;
   min-height: 100vh;
-  position: relative;
+  position: absolute;
   z-index: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding-top: 1rem; /* Added padding to give space at top */
-  padding-bottom: 1rem; /* Added padding to give space at bottom */
-  box-sizing: border-box; /* Ensures padding is included in element's total width and height */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-sizing: border-box;
 }
 
-/* Adjust header spacing for smaller screens */
 header .container {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
+header {
+  box-shadow: 0 10px 0px var(--color-button-primary-bg);
+  border: var(--color-text-heading) 1px solid;
 }
 
 header h1 {
-  font-size: 1.8rem; /* Slightly smaller font for mobile header */
+  font-size: 1.8rem;
 }
 
 header svg {
-  width: 24px; /* Slightly smaller SVG for mobile header */
+  width: 24px;
   height: 24px;
+  margin: 5px;
+  color : var(--color-button-primary-bg);
+}
+
+header a:hover {
+  color: var(--color-button-primary-hover);
+  border-color: var(--color-button-primary-hover);
 }
 
 @media (min-width: 768px) {
   header h1 {
-    font-size: 2.5rem; /* Revert to larger font for desktop */
+    font-size: 2.5rem;
   }
   header svg {
-    width: 30px; /* Revert to larger SVG for desktop */
+    width: 30px;
     height: 30px;
+    color : var(--color-button-primary-bg);
+
   }
 }
 
@@ -93,24 +105,20 @@ header svg {
   --color-button-primary-hover: #F2D070;
   --color-button-secondary-bg: #4D6B72;
   --color-button-secondary-text: #F8F8F8;
-
   --pattern-c1: #1A2E35;
   --pattern-c2: #2C4A52;
   --glass-bg-opacity: 0.92;
   --glass-border-opacity: 0.6;
-
   --loader-bg: #D4AF37;
   --loader-front: #1A2E35;
   --loader-back: #4D6B72;
   --loader-text: #D4AF37;
-
   --color-bg-primary-rgb-r: 26;
   --color-bg-primary-rgb-g: 46;
   --color-bg-primary-rgb-b: 53;
   --color-border-subtle-rgb-r: 77;
   --color-border-subtle-rgb-g: 107;
   --color-border-subtle-rgb-b: 114;
-
   --cursor-color-default: rgba(212, 175, 55, 0.7);
   --cursor-color-interactive: #D4AF37;
   --cursor-shadow-color: rgba(212, 175, 55, 0.7);
@@ -135,24 +143,20 @@ header svg {
   --color-button-primary-hover: #FFE84D;
   --color-button-secondary-bg: #5C5C8D;
   --color-button-secondary-text: #F0F0F0;
-
   --pattern-c1: #2C2C54;
   --pattern-c2: #3D3D6A;
   --glass-bg-opacity: 0.92;
   --glass-border-opacity: 0.6;
-
   --loader-bg: #FFD700;
   --loader-front: #2C2C54;
   --loader-back: #5C5C8D;
   --loader-text: #FFD700;
-
   --color-bg-primary-rgb-r: 44;
   --color-bg-primary-rgb-g: 44;
   --color-bg-primary-rgb-b: 84;
   --color-border-subtle-rgb-r: 92;
   --color-border-subtle-rgb-g: 92;
   --color-border-subtle-rgb-b: 141;
-
   --cursor-color-default: rgba(255, 215, 0, 0.7);
   --cursor-color-interactive: #FFD700;
   --cursor-shadow-color: rgba(255, 215, 0, 0.7);
@@ -177,24 +181,20 @@ header svg {
   --color-button-primary-hover: #FFFACD;
   --color-button-secondary-bg: #7A2A2A;
   --color-button-secondary-text: #F8F8F8;
-
   --pattern-c1: #3B0000;
   --pattern-c2: #5C0000;
   --glass-bg-opacity: 0.92;
   --glass-border-opacity: 0.6;
-
   --loader-bg: #F0E68C;
   --loader-front: #3B0000;
   --loader-back: #7A2A2A;
   --loader-text: #F0E68C;
-
   --color-bg-primary-rgb-r: 59;
   --color-bg-primary-rgb-g: 0;
   --color-bg-primary-rgb-b: 0;
   --color-border-subtle-rgb-r: 122;
   --color-border-subtle-rgb-g: 42;
   --color-border-subtle-rgb-b: 42;
-
   --cursor-color-default: rgba(240, 230, 140, 0.7);
   --cursor-color-interactive: #F0E68C;
   --cursor-shadow-color: rgba(240, 230, 140, 0.7);
@@ -220,56 +220,98 @@ header svg {
   --color-button-secondary-bg: #5C636E;
   --color-button-secondary-text: #E0E0E0;
   --color-button-secondary-hover: #7A808A;
-
   --pattern-c1: #282C34;
   --pattern-c2: #3A404A;
   --glass-bg-opacity: 0.92;
   --glass-border-opacity: 0.6;
-
   --loader-bg: #B0C4DE;
   --loader-front: #282C34;
   --loader-back: #5C636E;
   --loader-text: #B0C4DE;
-
   --color-bg-primary-rgb-r: 40;
   --color-bg-primary-rgb-g: 44;
   --color-bg-primary-rgb-b: 52;
   --color-border-subtle-rgb-r: 92;
   --color-border-subtle-rgb-g: 99;
   --color-border-subtle-rgb-b: 110;
-
   --cursor-color-default: rgba(176, 196, 222, 0.7);
   --cursor-color-interactive: #B0C4DE;
   --cursor-shadow-color: rgba(176, 196, 222, 0.7);
 }
 
+.theme-light-azure {
+  --color-bg-primary: #E0F2F7;
+  --color-bg-secondary: #CFE8EF;
+  --color-text-heading: #2C3E50;
+  --color-text-body: #34495E;
+  --color-accent-main: #3498DB;
+  --color-accent-dark: #2980B9;
+  --color-success-green: #2ECC71;
+  --color-error-red: #E74C3C;
+  --color-feedback-success: #3498DB;
+  --color-feedback-error: #3498DB;
+  --color-correct-unselected-text: #34495E;
+  --color-border-subtle: #A9D9E0;
+  --color-input-bg: #FFFFFF;
+  --color-button-primary-bg: #3498DB;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-primary-hover: #5DADE2;
+  --color-button-secondary-bg: #A9D9E0;
+  --color-button-secondary-text: #2C3E50;
+  --color-button-secondary-hover: #8DCED9;
+  --pattern-c1: #E0F2F7;
+  --pattern-c2: #CFE8EF;
+  --glass-bg-opacity: 0.92;
+  --glass-border-opacity: 0.6;
+  --loader-bg: #3498DB;
+  --loader-front: #E0F2F7;
+  --loader-back: #A9D9E0;
+  --loader-text: #3498DB;
+  --color-bg-primary-rgb-r: 224;
+  --color-bg-primary-rgb-g: 242;
+  --color-bg-primary-rgb-b: 247;
+  --color-border-subtle-rgb-r: 169;
+  --color-border-subtle-rgb-g: 217;
+  --color-border-subtle-rgb-b: 224;
+  --cursor-color-default: rgba(52, 152, 219, 0.7);
+  --cursor-color-interactive: #3498DB;
+  --cursor-shadow-color: rgba(52, 152, 219, 0.7);
+}
 
 .text-heading-color {
   color: var(--color-text-heading);
 }
+
 .text-body-color {
   color: var(--color-text-body);
 }
+
 .bg-primary-color {
   background-color: var(--color-bg-primary);
 }
+
 .bg-secondary-color {
   background-color: var(--color-bg-secondary);
 }
+
 .bg-input-bg-color {
   background-color: var(--color-input-bg);
 }
+
 .hover\:bg-accent-dark:hover {
   background-color: var(--color-accent-dark);
 }
+
 .border-subtle-color {
   border-color: var(--color-border-subtle);
 }
+
 .focus\:ring-accent-main:focus {
   --tw-ring-color: var(--color-accent-main);
 }
+
 .focus\:border-accent-main:focus {
-    border-color: var(--color-accent-main);
+  border-color: var(--color-accent-main);
 }
 
 .font-heading {
@@ -284,50 +326,51 @@ header svg {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(var(--color-border-subtle-rgb-r), var(--color-border-subtle-rgb-g), var(--color-border-subtle-rgb-b), var(--glass-border-opacity));
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 1);
+  padding: 20px;
 }
 
-.btn-primary {
-    background-color: var(--color-button-primary-bg);
-    color: var(--color-button-primary-text);
-    padding: 0.75rem 2rem;
-    font-weight: 700;
-    font-size: 1.125rem;
-    border-radius: 0.6rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-    transition: all 0.2s ease-in-out;
-}
-.btn-primary:hover {
-    background-color: var(--color-button-primary-hover);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    transform: translateY(-3px);
-}
-.btn-primary:active {
-    transform: translateY(0);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+.btn {
+  cursor: pointer;
+  position: relative;
+  padding: 8px 20px;
+  font-size: 18px;
+  color: var(--color-button-primary-bg);
+  border: 2px solid var(--color-button-primary-bg);
+  border-radius: 10px;
+  background-color: transparent;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
 }
 
-.btn-secondary {
-    background-color: var(--color-button-secondary-bg);
-    color: var(--color-button-secondary-text);
-    padding: 0.75rem 2rem;
-    font-weight: 600;
-    font-size: 1.125rem;
-    border-radius: 0.6rem;
-    border: 1px solid var(--color-border-subtle);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: all 0.2s ease-in-out;
-}
-.btn-secondary:hover {
-    background-color: var(--color-button-secondary-hover);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-    transform: translateY(-3px);
-}
-.btn-secondary:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: var(--color-button-primary-bg);
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
+.btn:hover::before {
+  scale: 3;
+}
+
+.btn:hover {
+  color: var(--color-button-primary-text);
+  scale: 1.114;
+  box-shadow: 0 0px 20px var(--cursor-shadow-color);
+}
+
+.btn:active {
+  scale: 0.9;
+}
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -339,15 +382,16 @@ header svg {
 }
 
 @keyframes fade-in-up {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .animate-fade-in-up {
   animation: fade-in-up 0.9s ease-out forwards;
 }
@@ -358,7 +402,7 @@ header svg {
     border-color: var(--color-success-green);
   }
   50% {
-    box-shadow: 0 0 25px rgba(255,215,0,0.8), 0 0 50px 20px var(--color-success-green);
+    box-shadow: 0 0 25px rgba(255,215,0,0.8), 0 0 8px 7px var(--color-success-green);
     border-color: var(--color-success-green);
   }
   100% {
@@ -372,8 +416,8 @@ header svg {
 }
 
 @keyframes popIn {
-    from { opacity: 0; transform: scale(0.7); }
-    to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .animate-pop-in {

@@ -20,7 +20,6 @@ function App() {
   const [totalCorrectAnswers, setTotalCorrectAnswers] = useState(0);
   const [totalQuestionsAttempted, setTotalQuestionsAttempted] = useState(0);
 
-
   const isDarkTheme = (themeName) => {
     return themeName === 'theme-emerald' || themeName === 'theme-indigo' || themeName === 'theme-crimson' || themeName === 'theme-obsidian';
   };
@@ -109,7 +108,6 @@ function App() {
     resetSessionToken();
   };
 
-
   return (
     <div className={`app-container`}>
       <CustomCursor />
@@ -131,25 +129,25 @@ function App() {
 
       <main className="flex-grow container mx-auto p-4 md:p-8 flex items-center justify-center z-10 relative">
         {isLoadingAnimationVisible && (
-          <div className="absolute inset-0 flex items-center justify-center frosted-glass-effect z-50">
+          <div className="absolute inset-0 flex items-center justify-center loader-overlay z-50">
             <Loader />
           </div>
         )}
 
         {sessionTokenError && (
           <div className="text-center text-error-red text-xl p-8 rounded-xl shadow-xl frosted-glass-effect max-w-2xl w-11/12 md:w-full animate-fade-in">
-              <p className="mb-4 font-merriweather">{sessionTokenError}</p>
+              <p className="mb-4">{sessionTokenError}</p>
               <button
-                  onClick={() => window.location.reload()}
-                  className="btn-primary w-full md:w-auto mt-6"
+                  onClick={resetSessionToken}
+                  className="btn-primary w-full md:w-auto"
                   data-interactive="true"
               >
-                  Refresh Page
+                  Try Again
               </button>
           </div>
         )}
 
-        {currentQuizPhase === 'briefing' && !sessionTokenError && (
+        {!isLoadingAnimationVisible && !sessionTokenError && currentQuizPhase === 'briefing' && (
           <QuizPhase
             onBeginExpedition={startExpedition}
             onLoadingAnimationChange={setIsLoadingAnimationVisible}

@@ -1,3 +1,4 @@
+// QuizPhase.jsx
 import React, { useState } from 'react';
 import Tooltip from './Tooltip';
 
@@ -122,7 +123,7 @@ const QuizPhase = ({ onBeginExpedition, onLoadingAnimationChange }) => {
             <div className="flex flex-col items-center space-y-4">
                 <button
                     onClick={handleBeginExpedition}
-                    className="btn-primary w-full md:w-auto"
+                    className="btn w-full md:w-auto"
                     data-interactive="true"
                 >
                     Commence Quest

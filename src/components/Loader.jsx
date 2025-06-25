@@ -1,225 +1,189 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const pulse = keyframes`
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+`;
+
+const progressBar = keyframes`
+  0% { width: 0%; }
+  100% { width: 100%; }
+`;
+
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+const spin = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
 
 const Loader = () => {
   return (
-    <StyledLoaderWrapper>
-      <div id="wifi-loader">
-        <svg className="circle-outer" viewBox="0 0 86 86">
-          <circle className="back" cx={43} cy={43} r={40} />
-          <circle className="front" cx={43} cy={43} r={40} />
-          <circle className="new" cx={43} cy={43} r={40} />
-        </svg>
-        <svg className="circle-middle" viewBox="0 0 60 60">
-          <circle className="back" cx={30} cy={30} r={27} />
-          <circle className="front" cx={30} cy={30} r={27} />
-        </svg>
-        <svg className="circle-inner" viewBox="0 0 34 34">
-          <circle className="back" cx={17} cy={17} r={14} />
-          <circle className="front" cx={17} cy={17} r={14} />
-        </svg>
-        <div className="text" data-text="Preparing" />
+    <StyledLoaderContainer>
+      <div className="terminal-header">
+        <div className="traffic-lights">
+
+        </div>
+        <div className="header-text">
+          <div className="loading-text">Loading...</div>
+        </div>
+        <div className="progress-bar-track">
+          <div className="progress-bar-fill" />
+        </div>
       </div>
-    </StyledLoaderWrapper>
+      <div className="terminal-body">
+        <div className="loader-content">
+          <div className="spinner" />
+          <div className="almost-there-text">
+            Almost There...
+          </div>
+          <div className="info-text">
+            <p>We're getting everything ready for you...</p>
+            <p>Sit tight for just a moment.</p>
+          </div>
+        </div>
+      </div>
+      <div className="terminal-footer">
+        <p>Appreciate your patience. Almost there!</p>
+      </div>
+    </StyledLoaderContainer>
   );
-};
+}
 
-const StyledLoaderWrapper = styled.div`
-  #wifi-loader {
-    --background: var(--loader-bg);
-    --front-color: var(--loader-front);
-    --back-color: var(--loader-back);
-    --text-color: var(--loader-text);
-    width: 64px;
-    height: 64px;
-    border-radius: 50px;
+const StyledLoaderContainer = styled.div`
+  max-width: 900px;
+  width: 100%;
+  background-color: var(--color-bg-secondary);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  .terminal-header {
+    background-color: var(--color-bg-primary);
+    display: flex;
+    align-items: center;
+    padding: 1.25rem;
+    color: var(--color-text-body);
     position: relative;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+  }
+
+  .traffic-lights {
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #wifi-loader svg {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    left: 0.75rem;
+    gap: 0.5rem;
   }
 
-  #wifi-loader svg circle {
+  .dot {
+    height: 0.875rem;
+    width: 0.875rem;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+  .dot.red { background-color: var(--color-error-red); }
+  .dot.red:hover { background-color: #ff3b36; }
+  .dot.yellow { background-color: var(--color-accent-main); }
+  .dot.yellow:hover { background-color: #ffaa33; }
+  .dot.green { background-color: var(--color-success-green); }
+  .dot.green:hover { background-color: #00b44e; }
+
+  .header-text {
+    flex: 1;
+    text-align: center;
+    color: var(--color-heading-color);
+    font-weight: 600;
+    font-size: 1.125rem;
+    position: relative;
+    animation: ${pulse} 2s infinite alternate;
+  }
+
+  .loading-text {
+    font-size: 1.25rem;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .progress-bar-track {
     position: absolute;
-    fill: none;
-    stroke-width: 6px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transform: rotate(-100deg);
-    transform-origin: center;
-  }
-
-  #wifi-loader svg circle.back {
-    stroke: var(--back-color);
-  }
-
-  #wifi-loader svg circle.front {
-    stroke: var(--front-color);
-  }
-
-  #wifi-loader svg.circle-outer {
-    height: 86px;
-    width: 86px;
-  }
-
-  #wifi-loader svg.circle-outer circle {
-    stroke-dasharray: 62.75 188.25;
-  }
-
-  #wifi-loader svg.circle-outer circle.back {
-    animation: circle-outer135 1.8s ease infinite 0.3s;
-  }
-
-  #wifi-loader svg.circle-outer circle.front {
-    animation: circle-outer135 1.8s ease infinite 0.15s;
-  }
-
-  #wifi-loader svg.circle-middle {
-    height: 60px;
-    width: 60px;
-  }
-
-  #wifi-loader svg.circle-middle circle {
-    stroke-dasharray: 42.5 127.5;
-  }
-
-  #wifi-loader svg.circle-middle circle.back {
-    animation: circle-middle6123 1.8s ease infinite 0.25s;
-  }
-
-  #wifi-loader svg.circle-middle circle.front {
-    animation: circle-middle6123 1.8s ease infinite 0.1s;
-  }
-
-  #wifi-loader svg.circle-inner {
-    height: 34px;
-    width: 34px;
-  }
-
-  #wifi-loader svg.circle-inner circle {
-    stroke-dasharray: 22 66;
-  }
-
-  #wifi-loader svg.circle-inner circle.back {
-    animation: circle-inner162 1.8s ease infinite 0.2s;
-  }
-
-  #wifi-loader svg.circle-inner circle.front {
-    animation: circle-inner162 1.8s ease infinite 0.05s;
-  }
-
-  #wifi-loader .text {
-    position: absolute;
-    bottom: -40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 0.875rem;
-    letter-spacing: 0.2px;
-  }
-
-  #wifi-loader .text::before, #wifi-loader .text::after {
-    content: attr(data-text);
-  }
-
-  #wifi-loader .text::before {
-    color: var(--text-color);
-  }
-
-  #wifi-loader .text::after {
-    color: var(--front-color);
-    animation: text-animation76 3.6s ease infinite;
-    position: absolute;
+    width: 100%;
+    bottom: 0;
     left: 0;
+    background-color: var(--color-subtle-color);
+    height: 0.25rem;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
   }
 
-  @keyframes circle-outer135 {
-    0% {
-      stroke-dashoffset: 25;
-    }
-
-    25% {
-      stroke-dashoffset: 0;
-    }
-
-    65% {
-      stroke-dashoffset: 301;
-    }
-
-    80% {
-      stroke-dashoffset: 276;
-    }
-
-    100% {
-      stroke-dashoffset: 276;
-    }
+  .progress-bar-fill {
+    background-color: var(--color-success-green);
+    height: 100%;
+    animation: ${progressBar} 2s linear infinite;
   }
 
-  @keyframes circle-middle6123 {
-    0% {
-      stroke-dashoffset: 17;
-    }
-
-    25% {
-      stroke-dashoffset: 0;
-    }
-
-    65% {
-      stroke-dashoffset: 204;
-    }
-
-    80% {
-      stroke-dashoffset: 187;
-    }
-
-    100% {
-      stroke-dashoffset: 187;
-    }
+  .terminal-body {
+    background-color: var(--color-bg-primary);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
   }
 
-  @keyframes circle-inner162 {
-    0% {
-      stroke-dashoffset: 9;
-    }
+  .loader-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
 
-    25% {
-      stroke-dashoffset: 0;
-    }
+  .spinner {
+    width: 6rem;
+    height: 6rem;
+    border: 4px solid var(--color-subtle-color);
+    border-top: 4px solid var(--color-success-green);
+    border-radius: 50%;
+    animation: ${spin} 1s linear infinite;
+    margin: 0 auto;
+  }
 
-    65% {
-      stroke-dashoffset: 106;
-    }
+  .almost-there-text {
+    color: var(--color-success-green);
+    font-weight: 600;
+    font-size: 2.25rem;
+    opacity: 0.9;
+    animation: ${fadeIn} 1s ease-out infinite alternate;
+    font-family: 'Playfair Display', serif;
+  }
 
-    80% {
-      stroke-dashoffset: 97;
-    }
-
-    100% {
-      stroke-dashoffset: 97;
+  .info-text {
+    color: var(--color-text-body);
+    font-size: 0.875rem;
+    opacity: 0.8;
+    animation: ${fadeIn} 1s ease-out infinite alternate;
+    p {
+        margin-bottom: 0.25rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
   }
 
-  @keyframes text-animation76 {
-    0% {
-      clip-path: inset(0 100% 0 0);
-    }
-
-    50% {
-      clip-path: inset(0);
-    }
-
-    100% {
-      clip-path: inset(0 0 0 100%);
-    }
+  .terminal-footer {
+    background-color: var(--color-bg-secondary);
+    padding: 1rem;
+    text-align: center;
+    color: var(--color-subtle-color);
+    font-size: 0.75rem;
+    font-family: 'Merriweather', serif;
   }
 `;
 
