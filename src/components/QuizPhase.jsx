@@ -1,4 +1,3 @@
-// QuizPhase.jsx
 import React, { useState } from 'react';
 import Tooltip from './Tooltip';
 
@@ -19,7 +18,7 @@ const QuizPhase = ({ onBeginExpedition, onLoadingAnimationChange }) => {
         setTimeout(() => {
             onBeginExpedition({ difficulty, category, numQuestions, timePerChallenge });
             onLoadingAnimationChange(false);
-        }, 1500);
+        }, 2000); // Changed from 1500 to 2000 to allow loader animations to complete
     };
 
     return (
