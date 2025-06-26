@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dhruvdesai407.github.io/CogniQuiz/sitemap.xml
