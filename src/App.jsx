@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+
 import Pattern from './components/Pattern';
 import Loader from './components/Loader';
 import CustomCursor from './components/CustomCursor';
@@ -6,12 +7,13 @@ import ThemeSelector from './components/ThemeSelector';
 import QuizPhase from './components/QuizPhase';
 import QuizGame from './components/QuizGame';
 import QuizResults from './components/QuizResults';
+import Leaderboard from './components/Leaderboard';
 
 function App() {
   const [currentQuizPhase, setCurrentQuizPhase] = useState('briefing');
   const [quizParameters, setQuizParameters] = useState(null);
   const [isLoadingAnimationVisible, setIsLoadingAnimationVisible] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState('theme-obsidian');
+  const [currentTheme, setCurrentTheme] = useState('theme-emerald');
   const [sessionToken, setSessionToken] = useState(null);
   const [sessionTokenError, setSessionTokenError] = useState(null);
   const [isFetchingToken, setIsFetchingToken] = useState(false);
@@ -19,11 +21,6 @@ function App() {
   const [quizFinalScore, setQuizFinalScore] = useState(0);
   const [totalCorrectAnswers, setTotalCorrectAnswers] = useState(0);
   const [totalQuestionsAttempted, setTotalQuestionsAttempted] = useState(0);
-
-
-  const isDarkTheme = (themeName) => {
-    return themeName === 'theme-emerald' || themeName === 'theme-indigo' || themeName === 'theme-crimson' || themeName === 'theme-obsidian';
-  };
 
   useEffect(() => {
     document.body.className = currentTheme;
@@ -78,36 +75,70 @@ function App() {
     }
   };
 
-  const startExpedition = (params) => {
+  const startExpedition = useCallback((params) => {
     setQuizParameters(params);
     setCurrentQuizPhase('game');
-  };
+  }, []);
 
-  const concludeExpedition = ({ finalScore, totalCorrect, totalQuestions, wasError, quizParameters: paramsUsed }) => {
+  const saveScoreToLocalStorage = useCallback(({ score, totalCorrect, totalQuestions, difficulty, category, numQuestions, timePerChallenge }) => {
+    const existingScores = JSON.parse(localStorage.getItem('quizLeaderboard')) || [];
+    const newScoreEntry = {
+      id: Date.now(),
+      score: score,
+      totalCorrect: totalCorrect,
+      totalQuestions: totalQuestions,
+      difficulty: difficulty,
+      category: category,
+      numQuestions: numQuestions,
+      timePerChallenge: timePerChallenge,
+      timestamp: new Date().toISOString(),
+    };
+    const updatedScores = [...existingScores, newScoreEntry];
+    localStorage.setItem('quizLeaderboard', JSON.stringify(updatedScores));
+  }, []);
+
+  const concludeExpedition = useCallback(async ({ finalScore, totalCorrect, totalQuestions, wasError, quizParameters: paramsUsed }) => {
     setQuizParameters(paramsUsed);
     setQuizFinalScore(finalScore);
     setTotalCorrectAnswers(totalCorrect);
     setTotalQuestionsAttempted(totalQuestions);
 
     if (!wasError) {
-        setCurrentQuizPhase('results');
+      saveScoreToLocalStorage({
+        score: finalScore,
+        totalCorrect: totalCorrect,
+        totalQuestions: totalQuestions,
+        difficulty: paramsUsed.difficulty,
+        category: paramsUsed.category,
+        numQuestions: paramsUsed.numQuestions,
+        timePerChallenge: paramsUsed.timePerChallenge,
+      });
+      setCurrentQuizPhase('results');
     } else {
-        setCurrentQuizPhase('briefing');
-        if (sessionTokenError || !sessionToken) {
-            setSessionToken(null);
-            setIsTokenReady(false);
-        }
+      setCurrentQuizPhase('briefing');
+      if (sessionTokenError || !sessionToken) {
+        setSessionToken(null);
+        setIsTokenReady(false);
+      }
     }
-  };
+  }, [saveScoreToLocalStorage, sessionTokenError, sessionToken]);
 
-  const startNewQuiz = () => {
+  const startNewQuiz = useCallback(() => {
     setQuizParameters(null);
     setQuizFinalScore(0);
     setTotalCorrectAnswers(0);
     setTotalQuestionsAttempted(0);
     setCurrentQuizPhase('briefing');
     resetSessionToken();
-  };
+  }, [resetSessionToken]);
+
+  const navigateToLeaderboard = useCallback(() => {
+    setCurrentQuizPhase('leaderboard');
+  }, []);
+
+  const returnToSettings = useCallback(() => {
+    setCurrentQuizPhase('briefing');
+  }, []);
 
   return (
     <div className={`app-container`}>
@@ -116,7 +147,7 @@ function App() {
 
       <header className="w-full bg-secondary-color text-body-color py-4 shadow-md z-10 relative">
         <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
-          <div className="flex items-center space-x-6 justify-between cont">
+          <div className="flex items-center space-x-6">
             <h1 className="text-xl md:text-4xl font-heading text-heading-color">CogniQuiz</h1>
             <a href="https://github.com/Dhruvdesai407/CogniQuiz" target="_blank" rel="noopener noreferrer" className="text-heading-color hover:text-yellow-300 transition-colors duration-200 p-2 rounded-full border border-heading-color hover:border-yellow-300 transform hover:scale-110 active:scale-95 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
@@ -127,7 +158,7 @@ function App() {
         </div>
       </header>
 
-      <main className="flex-grow container mx-auto p-4 md:p-8 flex items-center justify-center z-10 relative mt-3">
+      <main className="flex-grow container mx-auto p-4 md:p-8 flex items-center justify-center z-10 relative">
         {isLoadingAnimationVisible && (
           <div className="absolute inset-0 flex items-center justify-center loader-overlay z-50">
             <Loader />
@@ -139,7 +170,7 @@ function App() {
               <p className="mb-4">{sessionTokenError}</p>
               <button
                   onClick={resetSessionToken}
-                  className="btn-primary w-full md:w-auto"
+                  className="btn w-full md:w-auto"
                   data-interactive="true"
               >
                   Try Again
@@ -151,6 +182,7 @@ function App() {
           <QuizPhase
             onBeginExpedition={startExpedition}
             onLoadingAnimationChange={setIsLoadingAnimationVisible}
+            onViewLeaderboard={navigateToLeaderboard}
           />
         )}
 
@@ -178,6 +210,12 @@ function App() {
                 onStartNewQuiz={startNewQuiz}
                 quizParameters={quizParameters}
             />
+        )}
+
+        {currentQuizPhase === 'leaderboard' && (
+          <Leaderboard
+            onReturnToSettings={returnToSettings}
+          />
         )}
       </main>
 

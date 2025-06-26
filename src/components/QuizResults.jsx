@@ -5,18 +5,22 @@ const QuizResults = ({ finalScore, totalCorrect, totalQuestions, onStartNewQuiz,
     const copyScoreToClipboard = () => {
         const difficultyMap = { easy: 'Novice', medium: 'Adept', hard: 'Master' };
         const categoryMap = {
-            '9': 'General Knowledge', '18': 'Computers', '17': 'Science & Nature',
-            '21': 'Sports', '22': 'Geography', '23': 'History', '24': 'Politics',
-            '27': 'Animals', '11': 'Film', '12': 'Music', '14': 'Television',
-            '15': 'Video Games', '10': 'Books', '30': 'Gadgets', 'any': 'Any Realm'
+            '9': 'General Knowledge', '10': 'Books', '11': 'Film', '12': 'Music',
+            '13': 'Musicals & Theatres', '14': 'Television', '15': 'Video Games',
+            '16': 'Board Games', '17': 'Science & Nature', '18': 'Computers',
+            '19': 'Mathematics', '20': 'Mythology', '21': 'Sports', '22': 'Geography',
+            '23': 'History', '24': 'Politics', '25': 'Art', '26': 'Celebrities',
+            '27': 'Animals', '28': 'Vehicles', '29': 'Comics', '30': 'Gadgets',
+            '31': 'Anime & Manga', '32': 'Cartoon & Animations', 'any': 'Any Realm'
         };
 
         const quizDetails = [
-            `Correct Answers: ${totalCorrect}/${totalQuestions},`,
-            `Difficulty: ${difficultyMap[quizParameters.difficulty] || quizParameters.difficulty},`,
-            `Category: ${categoryMap[quizParameters.category] || quizParameters.category},`,
-            `Number of Questions: ${quizParameters.numQuestions},`,
-            `Time Per Question: ${quizParameters.timePerChallenge}s.`
+            `My CogniQuiz Score: ${finalScore} points!`,
+            `Correct Answers: ${totalCorrect}/${totalQuestions}`,
+            `Difficulty: ${difficultyMap[quizParameters.difficulty] || quizParameters.difficulty}`,
+            `Category: ${categoryMap[quizParameters.category] || quizParameters.category}`,
+            `Number of Questions: ${quizParameters.numQuestions}`,
+            `Time Per Question: ${quizParameters.timePerChallenge}s`
         ].join('\n');
 
         const el = document.createElement('textarea');
@@ -28,13 +32,9 @@ const QuizResults = ({ finalScore, totalCorrect, totalQuestions, onStartNewQuiz,
         el.select();
         try {
             const successful = document.execCommand('copy');
-            if (successful) {
-                alert('Quiz results copied to clipboard!');
-            } else {
-                alert('Failed to copy. Please copy manually.');
-            }
+            console.log('Quiz results copied to clipboard!');
         } catch (err) {
-            alert('Failed to copy. Error: ' + err.message);
+            console.error('Failed to copy. Error: ' + err.message);
         } finally {
             document.body.removeChild(el);
         }
@@ -43,7 +43,9 @@ const QuizResults = ({ finalScore, totalCorrect, totalQuestions, onStartNewQuiz,
     return (
         <div className="text-center p-8 md:p-12 rounded-xl shadow-xl frosted-glass-effect max-w-2xl w-11/12 md:w-full animate-fade-in">
             <h2 className="text-3xl md:text-5xl font-heading text-heading-color mb-4 md:mb-6">Quest Complete!</h2>
-
+            <p className="text-body-color text-xl md:text-2xl mb-2 font-merriweather">
+                Your final attainment: <span className="text-heading-color font-bold text-4xl md:text-5xl">{finalScore}</span> points!
+            </p>
             <p className="text-body-color text-lg md:text-xl mb-8 font-merriweather">
                 You answered <span className="font-bold text-heading-color">{totalCorrect}</span> out of <span className="font-bold text-heading-color">{totalQuestions}</span> challenges correctly.
             </p>
