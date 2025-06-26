@@ -147,7 +147,7 @@ function App() {
 
       <header className="w-full bg-secondary-color text-body-color py-4 shadow-md z-10 relative">
         <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-6 moding">
             <h1 className="text-xl md:text-4xl font-heading text-heading-color">CogniQuiz</h1>
             <a href="https://github.com/Dhruvdesai407/CogniQuiz" target="_blank" rel="noopener noreferrer" className="text-heading-color hover:text-yellow-300 transition-colors duration-200 p-2 rounded-full border border-heading-color hover:border-yellow-300 transform hover:scale-110 active:scale-95 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">

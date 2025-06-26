@@ -60,12 +60,21 @@ body {
 header .container {
   padding-top: 0.6rem;
   padding-bottom: 0.3rem;
+  width: 100%;
+  justify-content: space-between;
+
 }
 
 header {
   box-shadow: 0 12px 0px var(--color-button-primary-bg);
   border: var(--color-text-heading) 1px solid;
   margin-bottom:1rem;
+  width: 100%;
+}
+
+.moding {
+  justify-content: space-between;
+  width: 100%;
 }
 
 header h1 {
