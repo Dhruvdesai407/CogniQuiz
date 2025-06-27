@@ -31,6 +31,17 @@ Crafting CogniQuiz was an intense and deeply rewarding adventure, filled with fa
 
 One of the most significant quests was achieving **flawless UI contrast across diverse themes**. My initial attempts, particularly with a light theme, sadly resulted in frustratingly unreadable feedback. 😩 This wasn't just a bug; it was a fundamental design flaw that demanded a complete re-evaluation. Through iterative refinement and invaluable external feedback (which I embrace and learn from! 🙏), I overhauled the color variable system in `index.css` to guarantee high-contrast text for critical feedback messages. Ultimately, this led to the strategic decision to **pivot exclusively to rich, sophisticated dark themes** – including the beautiful "Obsidian Grace." This commitment to visual excellence ensures every user enjoys a truly premium and legible experience. 🎉
 
+### 🐛 Bug Squashing Adventures
+
+No quest is without its unexpected encounters! Recently, I tackled a couple of critical bugs to ensure a smoother, more reliable experience:
+
+*   **`fetchInitiatedRef is not defined` in `QuizGame.jsx`**: This `ReferenceError` was preventing the quiz from fetching questions correctly. The fix involved properly declaring `fetchInitiatedRef` using `useRef(false)` to manage the fetch state, ensuring questions load as expected without unintended re-fetches.
+*   **`Cannot read properties of null (reading 'difficulty')` in `QuizResults.jsx`**: This `TypeError` occurred when `quizParameters` was `null` during the display of quiz results, leading to a crash. I implemented robust null checks for `quizParameters` and its properties (`difficulty`, `category`, `numQuestions`, `timePerChallenge`) within `QuizResults.jsx`. This ensures the component gracefully handles cases where quiz parameters might be undefined, providing a more stable and resilient results display.
+
+These fixes reinforce the application's stability and user experience, ensuring that your journey through knowledge is as seamless as possible.
+
+### 🚧 The Journey of Creation: My Building Experience 🏗️💻✨
+
 Then, the legendary **Git Sagas** unfolded! 📜 Confronting errors like `fatal: not a git repository` (when the `.git` folder played hide-and-seek!), the cryptic `error: src refspec main does not match any`, and the dreaded `Updates were rejected because the remote contains work that you do not have locally`. These weren't mere hiccups; they were full-blown boss battles that tested my understanding of Git's intricate dance of histories and branches. 😵‍💫 Mastering `git pull --rebase` became my secret weapon, ensuring my local contributions merged seamlessly with the remote's evolution. Every successful `git push` after a Git skirmish was a triumphant moment, signifying not just code pushed, but a deeper understanding gained. 💪
 
 The pursuit of an exceptional user experience also involved meticulous UI refinement. Making the GitHub SVG icon visually prominent and perfectly spaced from the theme selector required careful alignment and border styling. 📐 The subtle `animate-pulse-subtle` effect for the correct answer, which started almost invisibly, was amplified by **5x** to deliver a striking "Aha!" moment – a direct response to feedback for a more impactful visual cue. ✨

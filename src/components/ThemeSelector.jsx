@@ -2,11 +2,11 @@ import React from 'react';
 
 const ThemeSelector = ({ currentTheme, onThemeChange }) => {
   const themes = [
-    { name: 'Emerald Serenity', value: 'theme-emerald' },
-    { name: 'Royal Indigo', value: 'theme-indigo' },
-    { name: 'Crimson Grandeur', value: 'theme-crimson' },
-    { name: 'Obsidian Grace', value: 'theme-obsidian' },
-    { name: 'Azure Dawn', value: 'theme-light-azure' },
+    { name: 'Celestial', value: 'theme-celestial' },
+    { name: 'Aurora', value: 'theme-aurora' },
+    { name: 'Dusk', value: 'theme-dusk' },
+    { name: 'Dawn', value: 'theme-dawn' },
+    { name: 'Midnight', value: 'theme-midnight' },
   ];
 
   return (

@@ -15,7 +15,9 @@ export default {
         'accent-cyan': 'var(--color-accent-cyan, #00BCD4)',
         'accent-cyan-dark': 'var(--color-accent-cyan-dark, #0097A7)',
         'success-green': 'var(--color-success-green, #4CAF50)',
-        'error-red': 'var(--color-error-red, #FF5252)',
+        'error-red': 'var(--color-error-red)',
+        'feedback-success': 'var(--color-feedback-success)',
+        'feedback-error': 'var(--color-feedback-error)',
         'border-subtle': 'var(--color-border-subtle, #3C486B)',
         'input-bg': 'var(--color-input-bg, #283556)',
       },
@@ -46,11 +48,16 @@ export default {
             '0%, 100%': { transform: 'scale(1)', color: 'var(--color-error-red)' },
             '50%': { transform: 'scale(1.05)', color: 'rgba(255, 82, 82, 0.7)' }, // Use rgba for pulse on error-red
         },
+        pulseSubtle: {
+          '0%, 100%': { boxShadow: '0 0 0 rgba(0,0,0,0), 0 0 0 0px var(--color-success-green)', borderColor: 'var(--color-success-green)' },
+          '50%': { boxShadow: '0 0 25px rgba(255,215,0,0.8), 0 0 8px 7px var(--color-success-green)', borderColor: 'var(--color-success-green)' },
+        },
       },
       animation: {
         'fade-in-out': 'fadeInOut 4s ease-in-out infinite',
         'pop-in': 'popIn 0.5s ease-out forwards',
         'timer-pulse': 'timerPulse 1s ease-in-out infinite',
+        'pulse-subtle': 'pulseSubtle 1.5s infinite ease-in-out',
       },
     },
   },
