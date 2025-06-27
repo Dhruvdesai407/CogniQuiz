@@ -45,7 +45,7 @@ Ready to fork your own version or contribute? It's easy!
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Dhruvdesai407/CogniQuiz.git](https://github.com/Dhruvdesai407/CogniQuiz.git)
+    git clone https://github.com/Dhruvdesai407/CogniQuiz.git
     ```
 2.  **Navigate to the project directory:**
     ```bash
