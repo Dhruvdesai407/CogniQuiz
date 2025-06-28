@@ -240,7 +240,7 @@ A safe way to access nested object properties without worrying about null or und
     If `find()` returns `undefined` (meaning no option was found), `?.text` will simply evaluate to `undefined` instead of throwing an error.
     **Why it's good:** Prevents runtime errors and makes code more robust when dealing with potentially missing data.
 
-## 8. The Developer Mindset: How to Analyze and Deconstruct
+## 8. The Developer Mindset: How to Analyze and Deconstruct (atleast that's what i have learned from this project and some books)
 
 This is the core of what you're asking for. It's not just about knowing syntax, but about how to *think* about software.
 
