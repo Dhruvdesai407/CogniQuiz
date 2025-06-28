@@ -25,12 +25,6 @@ We believe learning should be beautiful and effortless. CogniQuiz offers:
 * **Deployment:** Seamlessly hosted on GitHub Pages with `gh-pages` integration.
 * **Version Control:** Git & GitHub for robust development workflows.
 
-## 🚧 The Journey of Creation: My Building Experience 🏗️💻✨
-
-Crafting CogniQuiz was an intense and deeply rewarding adventure, filled with fascinating challenges that pushed my skills to new heights! 🤯 Every feature, every aesthetic choice, was a battle won, especially against the infamous "Git-boss" and the pursuit of true visual harmony.
-
-One of the most significant quests was achieving **flawless UI contrast across diverse themes**. My initial attempts, particularly with a light theme, sadly resulted in frustratingly unreadable feedback. 😩 This wasn't just a bug; it was a fundamental design flaw that demanded a complete re-evaluation. Through iterative refinement and invaluable external feedback (which I embrace and learn from! 🙏), I overhauled the color variable system in `index.css` to guarantee high-contrast text for critical feedback messages. Ultimately, this led to the strategic decision to **pivot exclusively to rich, sophisticated dark themes** – including the beautiful "Obsidian Grace." This commitment to visual excellence ensures every user enjoys a truly premium and legible experience. 🎉
-
 ### 🐛 Bug Squashing Adventures
 
 No quest is without its unexpected encounters! Recently, I tackled a couple of critical bugs to ensure a smoother, more reliable experience:
