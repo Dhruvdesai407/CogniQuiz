@@ -1,4 +1,4 @@
-# Project Insights: CogniQuiz
+# Project Insights: CogniQuiz (My thoughts)
 
 Welcome to the deep dive into CogniQuiz! This document is designed to help you understand the project's architecture, key concepts, and best practices, as if you had built it yourself. My goal is to empower you to write similar code and adopt the mindset of an experienced developer.
 
