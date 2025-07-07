@@ -4,7 +4,7 @@ Are you ready to truly challenge your intellect and discover new depths of knowl
 
 ## 🚀 Experience the Challenge Live!
 
-Dive into CogniQuiz right now: [https://dhruvdesai407.github.io/CogniQuiz/](https://dhruvdesai407.github.io/CogniQuiz/)
+Dive into CogniQuiz right now: [https://dhruvdesai793.github.io/CogniQuiz/](https://dhruvdesai793.github.io/CogniQuiz/)
 
 ## 🎯 Why Choose CogniQuiz?
 
